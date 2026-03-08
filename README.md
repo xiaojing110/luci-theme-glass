@@ -1,6 +1,6 @@
 # luci-theme-glass
 
-A modern glassmorphism theme for OpenWrt's LuCI web interface, inspired by Apple's visionOS and macOS design language. Every panel, sidebar, button, and input is built with true frosted-glass effects — translucent backgrounds, multi-stop gradients, backdrop blur, and subtle inset highlights.
+A glassmorphism theme for OpenWrt LuCI, inspired by Apple's visionOS and macOS. Frosted-glass panels, backdrop blur, translucent buttons, and inset highlights across the entire UI.
 
 ![License](https://img.shields.io/badge/license-GPL--3.0%20%2F%20Commercial-blue.svg)
 ![OpenWrt](https://img.shields.io/badge/OpenWrt-23.05%2B-brightgreen.svg)
@@ -27,29 +27,29 @@ A modern glassmorphism theme for OpenWrt's LuCI web interface, inspired by Apple
 ## Features
 
 ### Design
-- **True glassmorphism** — Multi-stop gradient overlays with `backdrop-filter: blur() saturate()`, translucent backgrounds, inset glow highlights, and 0.5px glass borders throughout the entire UI
-- **Glass buttons** — All buttons use the glass-ui pattern: neutral buttons are translucent glass, primary buttons are blue-tinted glass, danger buttons are red-tinted glass — no solid-color buttons anywhere
-- **Frosted sidebar** — Fixed sidebar with 30px blur, multi-directional gradient, and inset light diffusion
-- **Glass header bar** — Top navigation bar with glass pill badges for page title and status indicators
-- **Glass login card** — Frosted login page with translucent inputs and glass-styled submit button
+- **Glassmorphism everywhere** — `backdrop-filter: blur() saturate()` with multi-stop gradients, translucent backgrounds, 0.5px glass borders, and inset glow highlights on all panels
+- **Glass buttons** — Neutral buttons are translucent glass, primary buttons are blue-tinted, danger buttons are red-tinted. No solid-color buttons
+- **Frosted sidebar** — Fixed sidebar with 30px blur and inset light diffusion
+- **Glass header** — Top nav bar with glass pill badges for page title and status indicators
+- **Glass login card** — Frosted login page with translucent inputs
 
 ### Theming
-- **Auto / Light / Dark mode** — One-click theme toggle in the header bar cycles through three modes: **Auto** (follows your OS `prefers-color-scheme` setting), **Light** (force light), and **Dark** (force dark). Available on every page including the login screen. Preference is saved in `localStorage` and survives browser restarts
-- **Dark mode glass** — Dark variant uses lower-opacity gradients (`rgba(255,255,255,0.05-0.08)`) with adjusted shadows for a subtle glass look on dark backgrounds
-- **Server-side default** — Set the default mode via UCI config (`option mode 'dark'`, `'light'`, or `'normal'` for auto). Client-side toggle overrides the server default per browser
-- **Configurable accent color** — Primary color, blur radius, and glass transparency are all adjustable via UCI config
-- **Custom wallpapers** — Drop an image or video into the background folder and it becomes the page backdrop, visible through every glass panel
+- **Auto / Light / Dark mode** — Toggle in the header bar cycles through Auto (follows OS `prefers-color-scheme`), Light, and Dark. Works on every page including login. Saved to `localStorage` so it persists across sessions
+- **Dark mode glass** — Lower-opacity gradients (`rgba(255,255,255,0.05-0.08)`) with adjusted shadows
+- **Server-side default** — Set default mode via UCI config (`option mode 'dark'`, `'light'`, or `'normal'` for auto). The client-side toggle overrides this per browser
+- **Accent color config** — Primary color, blur radius, and glass transparency are adjustable via UCI
+- **Custom wallpapers** — Drop an image or video into the background folder. It shows through all glass panels
 
 ### Layout
-- **Responsive** — Desktop sidebar collapses to a slide-out drawer on mobile with hamburger toggle and overlay
-- **Sub-navigation bar** — CBI tab menus are lifted into a secondary glass bar below the header, keeping content area clean
-- **Sticky header** — Fixed header with smooth transitions when sidebar state changes
+- **Responsive** — Sidebar collapses to a slide-out drawer on mobile with hamburger toggle
+- **Sub-navigation bar** — CBI tab menus get moved into a secondary glass bar below the header
+- **Sticky header** — Fixed header with smooth transitions
 
 ### Compatibility
-- **Full LuCI coverage** — Styles all CBI components: sections, tables, forms, dropdowns, checkboxes, textareas, progress bars, tooltips, modals, and tab menus
-- **Page-specific fixes** — Overrides inline CSS from LuCI view JS files (software/package manager page layout, port status grid, network status cards)
-- **OpenWrt 23.05+** — Uses ucode `.ut` templates (the modern LuCI template engine)
-- **No external dependencies** — Pure CSS glassmorphism, no JavaScript frameworks required
+- **Full LuCI coverage** — Styles all CBI components: sections, tables, forms, dropdowns, checkboxes, textareas, progress bars, tooltips, modals, tab menus
+- **Page-specific fixes** — Overrides inline CSS from LuCI view JS (package manager layout, port status grid, network status cards)
+- **OpenWrt 23.05+** — Uses ucode `.ut` templates
+- **No dependencies** — Pure CSS, no JS frameworks
 
 ## Installation
 
@@ -66,13 +66,13 @@ opkg install luci-theme-glass_*.ipk
 ```sh
 # Add to your OpenWrt build tree
 cd /path/to/openwrt
-git clone https://github.com/user/luci-theme-glass.git package/luci-theme-glass
+git clone https://github.com/rchen14b/luci-theme-glass.git package/luci-theme-glass
 
 # Build
 make package/luci-theme-glass/compile V=s
 ```
 
-### Manual install (development)
+### Manual install (dev)
 
 ```sh
 # Copy theme files to router
@@ -80,7 +80,7 @@ scp -r htdocs/luci-static/glass/ root@router:/www/luci-static/glass/
 scp htdocs/luci-static/resources/menu-glass.js root@router:/www/luci-static/resources/
 scp -r ucode/template/themes/glass/ root@router:/usr/share/ucode/luci/template/themes/glass/
 
-# Register and activate the theme
+# Register and activate
 ssh root@router "uci set luci.themes.Glass=/luci-static/glass && \
   uci set luci.main.mediaurlbase=/luci-static/glass && \
   uci commit luci"
@@ -92,7 +92,7 @@ After installation, select **Glass** in **System > System > Language and Style**
 
 ### Theme config
 
-Create `/etc/config/glass` on the router for advanced customization:
+Create `/etc/config/glass` on the router:
 
 ```
 config global
@@ -107,21 +107,21 @@ config global
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `mode` | `normal` | `normal` (auto light/dark), `dark`, or `light` |
+| `mode` | `normal` | `normal` (auto), `dark`, or `light` |
 | `primary` | `#007AFF` | Accent color (light mode) |
 | `dark_primary` | `#0A84FF` | Accent color (dark mode) |
-| `blur` | `20` | Backdrop blur radius in px (light mode) |
+| `blur` | `20` | Backdrop blur in px (light mode) |
 | `transparency` | `0.72` | Glass panel opacity 0-1 (light mode) |
-| `blur_dark` | `25` | Backdrop blur radius in px (dark mode) |
+| `blur_dark` | `25` | Backdrop blur in px (dark mode) |
 | `transparency_dark` | `0.30` | Glass panel opacity 0-1 (dark mode) |
 
 ### Custom wallpapers
 
-Place a background file named `bg.*` in `/www/luci-static/glass/background/` on the router.
+Place a file named `bg.*` in `/www/luci-static/glass/background/` on the router.
 
-Supported formats: `.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`, `.mp4`, `.webm`
+Supported: `.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`, `.mp4`, `.webm`
 
-The background is visible through all glass panels, giving the theme its signature frosted look.
+The background shows through all glass panels.
 
 ## Development
 
@@ -132,10 +132,7 @@ The background is visible through all glass panels, giving the theme its signatu
 ### Building CSS
 
 ```sh
-# Main stylesheet
 lessc less/cascade.less htdocs/luci-static/glass/css/cascade.css
-
-# Dark mode overrides
 lessc less/dark.less htdocs/luci-static/glass/css/dark.css
 ```
 
@@ -146,14 +143,14 @@ luci-theme-glass/
 ├── Makefile                              # OpenWrt package build
 ├── htdocs/luci-static/
 │   ├── glass/
-│   │   ├── css/                          # Compiled CSS output
-│   │   ├── img/                          # Theme logo and icons
+│   │   ├── css/                          # Compiled CSS
+│   │   ├── img/                          # Logo and icons
 │   │   └── background/                   # User wallpapers (bg.jpg, etc.)
 │   └── resources/
 │       └── menu-glass.js                 # Client-side menu renderer
 ├── less/                                 # LESS source
 │   ├── cascade.less                      # Master import file
-│   ├── variables.less                    # CSS custom properties (design tokens)
+│   ├── variables.less                    # Design tokens (CSS custom properties)
 │   ├── normalize.less                    # CSS reset
 │   ├── glass.less                        # Glassmorphism mixins
 │   ├── layout.less                       # Sidebar, header, footer, content
@@ -171,35 +168,20 @@ luci-theme-glass/
 ├── root/                                 # Files installed to device root
 │   ├── etc/uci-defaults/                 # First-boot theme registration
 │   └── usr/share/rpcd/acl.d/            # ACL permissions
-└── screenshots/                          # Beta release screenshots
+└── screenshots/
 ```
 
 ### Design system
 
-All design tokens are defined as CSS custom properties in `variables.less`. The glass effects use three LESS mixins:
+Design tokens live in `variables.less`. Glass effects use three LESS mixins:
 
 | Mixin | Use | Blur | Opacity |
 |-------|-----|------|---------|
-| `.glass-effect()` | Standard panels, cards | `var(--glass-blur)` | `var(--glass-bg)` |
+| `.glass-effect()` | Panels, cards | `var(--glass-blur)` | `var(--glass-bg)` |
 | `.glass-frosted()` | Sidebar, login card | 30px | Higher |
 | `.glass-subtle()` | Secondary elements | Lower | Minimal |
 
-Buttons follow the [glass-ui](https://github.com/crenspire/glass-ui) pattern:
-
-```css
-/* Glass button base */
-background-image: linear-gradient(135deg,
-  rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.12) 25%,
-  rgba(240,248,255,0.13) 50%, rgba(255,255,255,0.11) 75%,
-  rgba(230,240,255,0.12) 100%);
-background-color: transparent;
-backdrop-filter: blur(10px) saturate(180%);
-border: 0.5px solid rgba(255,255,255,0.12);
-```
-
 ### Version bump checklist
-
-When releasing a new version, update these files:
 
 1. `Makefile` — `PKG_VERSION`
 2. `README.md` — version badge
@@ -209,13 +191,13 @@ When releasing a new version, update these files:
 
 ## Credits
 
-- Architecture inspired by [luci-theme-argon](https://github.com/jerrykuku/luci-theme-argon)
-- Glass effects based on [glass-ui](https://github.com/crenspire/glass-ui)
-- Design language inspired by Apple's visionOS and macOS
+- Architecture based on [luci-theme-argon](https://github.com/jerrykuku/luci-theme-argon)
+- Glass effects from [glass-ui](https://github.com/crenspire/glass-ui)
+- Design language from Apple visionOS / macOS
 
 ## License
 
-This project is dual-licensed:
+Dual-licensed:
 
-- **Open Source**: [GNU General Public License v3.0](LICENSE) — free for personal, educational, and open-source use. Any derivative work must also be released under GPL-3.0.
-- **Commercial**: For proprietary/closed-source commercial use, a separate commercial license is required. Contact the author for details.
+- **Open Source**: [GPL-3.0](LICENSE) — free for personal, educational, and open-source use. Derivatives must also be GPL-3.0.
+- **Commercial**: Proprietary/closed-source use requires a separate license. Contact the author.
