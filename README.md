@@ -9,17 +9,20 @@ A modern glassmorphism theme for OpenWrt's LuCI web interface, inspired by Apple
 
 ## Screenshots
 
-| Login | Overview (Light) |
-|:---:|:---:|
-| ![Login](screenshots/Login_page_light.png) | ![Overview Light](screenshots/Overview_page_light.png) |
+### Login
+![Login](screenshots/Login_page_light.png)
 
-| Overview (Dark) | Software |
-|:---:|:---:|
-| ![Overview Dark](screenshots/Overview_page_dark.png) | ![Software](screenshots/Software_page_light.png) |
+### Overview (Light)
+![Overview Light](screenshots/Overview_page_light.png)
 
-| Traffic Graph |
-|:---:|
-| ![Traffic](screenshots/Traffic_graph_light.png) |
+### Overview (Dark)
+![Overview Dark](screenshots/Overview_page_dark.png)
+
+### Software
+![Software](screenshots/Software_page_light.png)
+
+### Traffic Graph
+![Traffic](screenshots/Traffic_graph_light.png)
 
 ## Features
 
