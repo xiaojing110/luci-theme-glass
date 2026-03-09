@@ -4,7 +4,7 @@ A glassmorphism theme for OpenWrt LuCI, inspired by Apple's visionOS and macOS. 
 
 ![License](https://img.shields.io/badge/license-GPL--3.0%20%2F%20Commercial-blue.svg)
 ![OpenWrt](https://img.shields.io/badge/OpenWrt-23.05%2B-brightgreen.svg)
-![Version](https://img.shields.io/badge/version-1.0.0-orange.svg)
+![Version](https://img.shields.io/badge/version-1.0.1-orange.svg)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?style=flat&logo=buy-me-a-coffee)](https://buymeacoffee.com/rchen14b)
 
 ## Screenshots
