@@ -2,7 +2,7 @@
 set -e
 
 PKG_NAME="luci-theme-glass"
-PKG_VERSION="1.0.3"
+PKG_VERSION="1.0.4"
 PKG_RELEASE="1"
 MAINTAINER="Ryan Chen <rchen14b@gmail.com>"
 DESCRIPTION="Glass - Apple-inspired glassmorphism theme for LuCI"
