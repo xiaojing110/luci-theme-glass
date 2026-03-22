@@ -60,7 +60,7 @@ jobs:
             -v "$PWD/dist/apk_staging:/repo" \
             alpine:latest sh -c "
               cd /repo
-              apk mkndx -o packages.adb *.apk 2>&1 || \
+              apk mkndx --allow-untrusted -o packages.adb *.apk 2>&1 || \
               echo 'WARN: apk mkndx failed'
             "
 
