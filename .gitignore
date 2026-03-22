@@ -13,7 +13,7 @@ docs/
 *~
 
 # Signing keys (secret key is in GitHub Secrets, NEVER commit)
-keys/
+/keys/
 
 # Build output
 dist/
