@@ -48,6 +48,8 @@
   --glass-border: rgba(255, 255, 255, 0.45);
   --glass-shadow: 0 2px 16px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.08);
   --glass-shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.06);
+  /* Reusable glass pill gradient — used by header, sub-nav, tabs, buttons, pills */
+  --glass-pill-bg: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.1) 25%, rgba(240,248,255,0.12) 50%, rgba(255,255,255,0.08) 75%, rgba(230,240,255,0.1) 100%);
   /* ---- Layout ---- */
   --sidebar-width: 260px;
   --sidebar-collapsed-width: 64px;
@@ -253,6 +255,7 @@ h4 {
   display: flex;
   flex-direction: column;
   transition: transform var(--transition-slow);
+  will-change: transform;
   overflow: hidden;
 }
 .sidebar-header {
@@ -489,8 +492,8 @@ h4 {
   padding: 4px 4px 4px 6px;
   gap: var(--space-xs);
   transition: left var(--transition-slow);
-  /* True glassmorphism — multi-stop gradient like sub-nav */
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%);
+  will-change: left;
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -563,7 +566,7 @@ h4 {
   display: flex;
   align-items: center;
   border-radius: var(--radius-md);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 25%, rgba(240, 248, 255, 0.12) 50%, rgba(255, 255, 255, 0.08) 75%, rgba(230, 240, 255, 0.1) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   border: 0.5px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03), 0 0 0 0.5px rgba(255, 255, 255, 0.08) inset, 0 1px 6px rgba(255, 255, 255, 0.1) inset;
@@ -632,7 +635,7 @@ h4 {
   display: flex;
   align-items: center;
   border-radius: var(--radius-md);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 25%, rgba(240, 248, 255, 0.12) 50%, rgba(255, 255, 255, 0.08) 75%, rgba(230, 240, 255, 0.1) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   border: 0.5px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03), 0 0 0 0.5px rgba(255, 255, 255, 0.08) inset, 0 1px 6px rgba(255, 255, 255, 0.1) inset;
@@ -648,7 +651,7 @@ h4 {
   display: flex;
   align-items: center;
   border-radius: var(--radius-md);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 25%, rgba(240, 248, 255, 0.12) 50%, rgba(255, 255, 255, 0.08) 75%, rgba(230, 240, 255, 0.1) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   border: 0.5px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03), 0 0 0 0.5px rgba(255, 255, 255, 0.08) inset, 0 1px 6px rgba(255, 255, 255, 0.1) inset;
@@ -715,13 +718,12 @@ html[data-theme="dark"] .theme-icon-dark {
   top: var(--space-lg);
   right: var(--space-lg);
   z-index: var(--z-dropdown);
-  width: 36px;
-  height: 36px;
+  width: 2.25rem;
   height: 2.25rem;
   display: flex;
   align-items: center;
   border-radius: var(--radius-md);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 25%, rgba(240, 248, 255, 0.12) 50%, rgba(255, 255, 255, 0.08) 75%, rgba(230, 240, 255, 0.1) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   border: 0.5px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03), 0 0 0 0.5px rgba(255, 255, 255, 0.08) inset, 0 1px 6px rgba(255, 255, 255, 0.1) inset;
@@ -763,7 +765,7 @@ html[data-theme="dark"] .theme-icon-dark {
   overflow-x: auto;
   transition: left var(--transition-slow);
   /* Glass tab-list background — from glass-ui */
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -826,6 +828,7 @@ html[data-theme="dark"] .theme-icon-dark {
   min-height: calc(100vh - 44px - var(--sidebar-gap) * 2);
   padding: var(--content-padding);
   transition: margin-left var(--transition-slow);
+  will-change: margin-left;
   animation: page-enter 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 /* JS view content — fade in when LuCI replaces the spinner */
@@ -899,6 +902,7 @@ body.has-sub-nav #content-wrap {
   font-size: var(--font-size-sm);
   color: var(--color-text-tertiary);
   transition: margin-left var(--transition-slow);
+  will-change: margin-left;
 }
 .glass-footer a {
   color: var(--color-text-tertiary);
@@ -926,7 +930,9 @@ body.has-sub-nav #content-wrap {
   margin-bottom: var(--space-xl);
   position: relative;
   overflow-x: auto;
-  /* Lift section above siblings when a dropdown is open inside it */
+  /* Content visibility — skip off-screen sections for faster initial paint */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px;
   /* Nested sections — flatten (no extra box/padding) */
 }
 .cbi-section:has(.cbi-dropdown[open]) {
@@ -1134,7 +1140,7 @@ select:focus {
   font-weight: var(--font-weight-medium);
   border-radius: var(--radius-md);
   /* Glass button surface */
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: rgba(255, 255, 255, 0.55);
   border: 0.5px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 0 6px rgba(255, 255, 255, 0.1);
@@ -1255,7 +1261,7 @@ select:focus {
   justify-content: flex-end;
   gap: var(--space-sm);
   /* Match header nav bar glass style */
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -1609,7 +1615,7 @@ table.cbi-section-table .tr:hover .td {
   padding-left: var(--space-xs);
   border-radius: var(--radius-md);
   /* Glass tab bar — match header/sub-nav pattern */
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -2034,7 +2040,7 @@ body.modal-overlay-active #modal_overlay {
   width: 100%;
   padding: var(--space-md) var(--space-lg);
   /* Glass button — glass-ui .glass-bg pattern */
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
@@ -2219,7 +2225,7 @@ div[style*="display:grid;grid-template-columns:repeat"] > .ifacebox {
   text-align: center;
   border-radius: var(--radius-md) !important;
   /* Glass-ui card pattern */
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%) !important;
+  background-image: var(--glass-pill-bg) !important;
   background-color: transparent !important;
   backdrop-filter: blur(10px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
@@ -2408,7 +2414,7 @@ progress::-moz-progress-bar {
 #diag-rc-output {
   border-radius: var(--radius-md);
   padding: var(--space-lg);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -2419,7 +2425,7 @@ progress::-moz-progress-bar {
 .cbi-filebrowser {
   border-radius: var(--radius-md);
   padding: var(--space-lg);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 25%, rgba(240, 248, 255, 0.13) 50%, rgba(255, 255, 255, 0.11) 75%, rgba(230, 240, 255, 0.12) 100%);
+  background-image: var(--glass-pill-bg);
   background-color: transparent;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));

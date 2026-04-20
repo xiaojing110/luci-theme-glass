@@ -28,6 +28,7 @@ return baseclass.extend({
 	netChecked: false,
 	linkSpeed: null,
 	numCores: 1,
+	_lastSessionWrite: {},
 
 	__init__: function() {
 		var self = this;
@@ -46,11 +47,18 @@ return baseclass.extend({
 		uptime: '<svg xmlns="http://www.w3.org/2000/svg" class="indicator-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="6"/><polyline points="7 3 7 7 10 9"/></svg>'
 	},
 
+	/* Cache pre-built icon DOM nodes — create once, clone many times */
+	_iconCache: {},
+
 	makeIcon: function(name) {
+		if (this._iconCache[name])
+			return this._iconCache[name].cloneNode(true);
 		var markup = this.icons[name];
 		if (!markup) return document.createTextNode('');
 		var doc = new DOMParser().parseFromString(markup, 'image/svg+xml');
-		return document.importNode(doc.documentElement, true);
+		var node = document.importNode(doc.documentElement, true);
+		this._iconCache[name] = node;
+		return node.cloneNode(true);
 	},
 
 	createIndicator: function(name, title) {
@@ -65,11 +73,20 @@ return baseclass.extend({
 		try { cached = sessionStorage.getItem('glass-status-' + name); } catch(e) {}
 		val.textContent = cached || '--';
 		el.appendChild(val);
+		/* Cache value element ref to avoid querySelector every update */
+		el._valueEl = val;
 		return el;
 	},
 
 	setLevel: function(el, level) {
 		el.setAttribute('data-level', level);
+	},
+
+	/* Throttled sessionStorage write — only write when value actually changes */
+	_saveSession: function(key, value) {
+		if (this._lastSessionWrite[key] === value) return;
+		this._lastSessionWrite[key] = value;
+		try { sessionStorage.setItem(key, value); } catch(e) {}
 	},
 
 	setupIndicators: function() {
@@ -82,7 +99,7 @@ return baseclass.extend({
 
 		this.container.appendChild(this.cpuEl);
 		this.container.appendChild(this.ramEl);
-		this.container.appendChild(this.uptimeEl);
+		this.uptimeEl && this.container.appendChild(this.uptimeEl);
 
 		this.fetchAndUpdate();
 		setInterval(L.bind(this.fetchAndUpdate, this), 5000);
@@ -173,8 +190,8 @@ return baseclass.extend({
 			var pct = Math.min(load1 / this.numCores, 1) * 100;
 			var pctStr = pct.toFixed(0) + '%';
 
-			this.cpuEl.querySelector('.indicator-value').textContent = pctStr;
-			try { sessionStorage.setItem('glass-status-cpu', pctStr); } catch(e) {}
+			this.cpuEl._valueEl.textContent = pctStr;
+			this._saveSession('glass-status-cpu', pctStr);
 			this.cpuEl.title = 'CPU: ' + pctStr + ' (load ' + load1.toFixed(2) +
 				' / ' + load5 + ' / ' + load15 + ' on ' + this.numCores +
 				(this.numCores === 1 ? ' core)' : ' cores)');
@@ -188,8 +205,9 @@ return baseclass.extend({
 			var avail = info.memory.available || info.memory.free;
 			var used = total - avail;
 			var pct = (used / total * 100).toFixed(0);
-			this.ramEl.querySelector('.indicator-value').textContent = pct + '%';
-			try { sessionStorage.setItem('glass-status-ram', pct + '%'); } catch(e) {}
+			var pctStr = pct + '%';
+			this.ramEl._valueEl.textContent = pctStr;
+			this._saveSession('glass-status-ram', pctStr);
 			this.ramEl.title = 'RAM: ' + this.formatBytes(used) + ' / ' + this.formatBytes(total) + ' (' + pct + '% used)';
 
 			var level = pct < 60 ? 'ok' : pct < 85 ? 'warn' : 'crit';
@@ -197,8 +215,9 @@ return baseclass.extend({
 		}
 
 		if (info.uptime) {
-			this.uptimeEl.querySelector('.indicator-value').textContent = this.formatUptime(info.uptime);
-			try { sessionStorage.setItem('glass-status-uptime', this.formatUptime(info.uptime)); } catch(e) {}
+			var upText = this.formatUptime(info.uptime);
+			this.uptimeEl._valueEl.textContent = upText;
+			this._saveSession('glass-status-uptime', upText);
 			this.uptimeEl.title = 'Uptime: ' + this.formatUptimeFull(info.uptime);
 		}
 	},
@@ -218,8 +237,8 @@ return baseclass.extend({
 				if (rxSpeed < 0) rxSpeed = 0;
 				if (txSpeed < 0) txSpeed = 0;
 				var netText = '\u2193' + this.formatSpeed(rxSpeed) + ' \u2191' + this.formatSpeed(txSpeed);
-				this.netEl.querySelector('.indicator-value').textContent = netText;
-				try { sessionStorage.setItem('glass-status-net', netText); } catch(e) {}
+				this.netEl._valueEl.textContent = netText;
+				this._saveSession('glass-status-net', netText);
 				var tip = (this.netLabel || this.netDevice) + ': \u2193 ' + this.formatSpeedFull(rxSpeed) + ' / \u2191 ' + this.formatSpeedFull(txSpeed);
 				if (this.linkSpeed)
 					tip += ' (Link: ' + (this.linkSpeed >= 1000 ? (this.linkSpeed / 1000) + ' Gbps' : this.linkSpeed + ' Mbps') + ')';

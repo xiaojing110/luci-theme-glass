@@ -20,11 +20,18 @@ return baseclass.extend({
 		'_default':    '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'
 	},
 
+	/* Cache pre-built icon DOM nodes — create once with DOMParser, clone after */
+	_iconCache: {},
+
 	getIcon: function(name) {
+		if (this._iconCache[name])
+			return this._iconCache[name].cloneNode(true);
 		var pathData = this.icons[name] || this.icons['_default'];
 		var markup = '<svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + pathData + '</svg>';
 		var doc = new DOMParser().parseFromString(markup, 'image/svg+xml');
-		return document.importNode(doc.documentElement, true);
+		var node = document.importNode(doc.documentElement, true);
+		this._iconCache[name] = node;
+		return node.cloneNode(true);
 	},
 
 	render: function(tree) {
@@ -169,6 +176,8 @@ return baseclass.extend({
 		var children = ui.menu.getChildren(tree);
 		if (children.length == 0) return;
 
+		/* Use DocumentFragment for batch DOM insertion — single reflow */
+		var frag = document.createDocumentFragment();
 		var group = E('div', { 'class': 'nav-group' });
 
 		for (var i = 0; i < children.length; i++) {
@@ -285,7 +294,8 @@ return baseclass.extend({
 			}
 		}
 
-		container.appendChild(group);
+		frag.appendChild(group);
+		container.appendChild(frag);
 	},
 
 	renderTabMenu: function(tree, url, level) {

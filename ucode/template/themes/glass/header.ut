@@ -104,19 +104,13 @@
   </style>
   {% endif %}
   <script>
-  (function(){
-    var d=document.getElementById('dark-styles'),m=document.getElementById('meta-theme-color'),s;
+  /* Theme init — runs synchronously to prevent FOUC.
+     Minimal: only reads localStorage and sets two attributes. */
+  (function(d,s){
     try{s=localStorage.getItem('glass-theme')}catch(e){}
-    if(s){
-      if(s==='dark'){d.media='all';if(m)m.content='#2c2e3a'}
-      else if(s==='light'){d.media='not all';if(m)m.content='#f5f5f7'}
-      else{s='auto';d.media='(prefers-color-scheme: dark)';if(m)m.content=window.matchMedia('(prefers-color-scheme: dark)').matches?'#2c2e3a':'#f5f5f7'}
-    }else{
-      var media=d.media;
-      if(media==='all')s='dark';else if(media==='not all')s='light';else{s='auto';if(m)m.content=window.matchMedia('(prefers-color-scheme: dark)').matches?'#2c2e3a':'#f5f5f7'}
-    }
-    document.documentElement.dataset.theme=s;
-  })();
+    if(s){d.dataset.theme=s}
+    else{d.dataset.theme='auto'}
+  })(document.documentElement);
   </script>
   {% if (node?.css): %}
   <link rel="stylesheet" href="{{ resource }}/{{ node.css }}">
@@ -124,8 +118,8 @@
   {% if (css): %}
   <style>{{ css }}</style>
   {% endif %}
-  <script src="{{ dispatcher.build_url('admin/translations', dispatcher.lang) }}"></script>
-  <script src="{{ resource }}/cbi.js"></script>
+  <script defer src="{{ dispatcher.build_url('admin/translations', dispatcher.lang) }}"></script>
+  <script defer src="{{ resource }}/cbi.js"></script>
 </head>
 <body class="lang_{{ dispatcher.lang }}" data-page="{{ entityencode(join('-', ctx.request_path), true) }}">
 

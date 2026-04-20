@@ -53,6 +53,16 @@
     if (overlay) overlay.addEventListener('click', closeSidebar);
   })();
 
+  /* Apply dark CSS media after DOM ready — deferred from head to avoid blocking */
+  (function(){
+    var d=document.getElementById('dark-styles'),m=document.getElementById('meta-theme-color');
+    if(!d)return;
+    var s=document.documentElement.dataset.theme||'auto';
+    if(s==='dark'){d.media='all';if(m)m.content='#2c2e3a'}
+    else if(s==='light'){d.media='not all';if(m)m.content='#f5f5f7'}
+    else{d.media='(prefers-color-scheme: dark)';if(m)m.content=window.matchMedia('(prefers-color-scheme: dark)').matches?'#2c2e3a':'#f5f5f7'}
+  })();
+
   /* Theme toggle — auto / light / dark cycle */
   (function(){
     var btn=document.getElementById('theme-toggle');
