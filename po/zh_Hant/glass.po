@@ -4,6 +4,178 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: ucode/template/themes/glass/sysauth.ut:50
+msgid "Login"
+msgstr "登入"
+
 #: ucode/template/themes/glass/sysauth.ut:104
 msgid "Sign in to continue"
 msgstr "登入以繼續"
+
+#: ucode/template/themes/glass/sysauth.ut:109
+msgid "Invalid username and/or password! Please try again."
+msgstr "使用者名稱或密碼無效！請重試。"
+
+#: ucode/template/themes/glass/sysauth.ut:115
+msgid "Username"
+msgstr "使用者名稱"
+
+#: ucode/template/themes/glass/sysauth.ut:122
+msgid "Password"
+msgstr "密碼"
+
+#: ucode/template/themes/glass/sysauth.ut:127
+msgid "Log in"
+msgstr "登入"
+
+#: ucode/template/themes/glass/header.ut:176
+msgid "No password set!"
+msgstr "未設定密碼！"
+
+#: ucode/template/themes/glass/header.ut:177
+msgid "There is no password set on this router. Please configure a root password to protect the web interface."
+msgstr "目前路由器未設定密碼。請設定 root 密碼以保護 Web 管理介面。"
+
+#: ucode/template/themes/glass/header.ut:179
+msgid "Go to password configuration..."
+msgstr "前往密碼設定..."
+
+#: ucode/template/themes/glass/header.ut:186
+msgid "JavaScript required!"
+msgstr "需要啟用 JavaScript！"
+
+#: ucode/template/themes/glass/header.ut:187
+msgid "You must enable JavaScript in your browser or LuCI will not work properly."
+msgstr "請在瀏覽器中啟用 JavaScript，否則 LuCI 將無法正常運作。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Glass Theme"
+msgstr "Glass 主題"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Configure the appearance of the Glass theme. Changes take effect after saving and refreshing the page."
+msgstr "設定 Glass 主題的外觀。儲存並重新整理頁面後生效。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "General"
+msgstr "一般"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Theme mode"
+msgstr "主題模式"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Controls the overall appearance. \"Normal\" follows the system preference."
+msgstr "控制整體外觀。"自動"跟隨系統偏好設定。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Auto (follow system)"
+msgstr "自動（跟隨系統）"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Light"
+msgstr "淺色"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Dark"
+msgstr "深色"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Header status bar"
+msgstr "頂部狀態列"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Show live system stats (CPU, RAM, network, uptime) in the header. Disable to reduce resource usage on low-end devices."
+msgstr "在頂部顯示即時系統狀態（CPU、記憶體、網路、運作時間）。關閉可減少低階裝置的資源佔用。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Base font size"
+msgstr "基礎字型大小"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Scales all text in the theme. Larger values improve readability on high-DPI displays."
+msgstr "縮放主題中所有文字。更大的值可提高高解析度螢幕的可讀性。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Small (13px)"
+msgstr "小 (13px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Normal (14px)"
+msgstr "標準 (14px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Large (16px)"
+msgstr "大 (16px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Extra Large (18px)"
+msgstr "特大 (18px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Accent Colors"
+msgstr "強調色"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Primary color (light mode)"
+msgstr "主色調（淺色模式）"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Accent color used for active elements, links, and buttons in light mode."
+msgstr "淺色模式下活動元素、連結和按鈕的強調色。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Primary color (dark mode)"
+msgstr "主色調（深色模式）"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Accent color used for active elements, links, and buttons in dark mode."
+msgstr "深色模式下活動元素、連結和按鈕的強調色。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Glass Effects — Light Mode"
+msgstr "玻璃效果 — 淺色模式"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Blur intensity (px)"
+msgstr "模糊強度 (px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Backdrop blur radius for glass panels. Higher values create a more frosted appearance."
+msgstr "玻璃面板的背景模糊半徑。值越大，磨砂效果越明顯。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Panel transparency"
+msgstr "面板透明度"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Background opacity of glass panels (0 = fully transparent, 1 = fully opaque)."
+msgstr "玻璃面板的背景不透明度（0 = 完全透明，1 = 完全不透明）。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Glass Effects — Dark Mode"
+msgstr "玻璃效果 — 深色模式"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Backdrop blur radius for glass panels in dark mode."
+msgstr "深色模式下玻璃面板的背景模糊半徑。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Background opacity of glass panels in dark mode (0 = fully transparent, 1 = fully opaque)."
+msgstr "深色模式下玻璃面板的背景不透明度（0 = 完全透明，1 = 完全不透明）。"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Background"
+msgstr "背景"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Current background"
+msgstr "目前背景"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Active"
+msgstr "已啟用"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "No background set. Upload an image or video named \"bg\" (e.g. bg.jpg, bg.png, bg.mp4) to /www/luci-static/glass/background/ via SCP."
+msgstr "未設定背景。請透過 SCP 上傳名為 \"bg\" 的圖片或影片（如 bg.jpg、bg.png、bg.mp4）到 /www/luci-static/glass/background/ 目錄。"

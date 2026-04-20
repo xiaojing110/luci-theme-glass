@@ -4,6 +4,178 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
+#: ucode/template/themes/glass/sysauth.ut:50
+msgid "Login"
+msgstr "Anmelden"
+
 #: ucode/template/themes/glass/sysauth.ut:104
 msgid "Sign in to continue"
 msgstr "Zum Fortfahren anmelden"
+
+#: ucode/template/themes/glass/sysauth.ut:109
+msgid "Invalid username and/or password! Please try again."
+msgstr "Ungültiger Benutzername und/oder Passwort! Bitte versuchen Sie es erneut."
+
+#: ucode/template/themes/glass/sysauth.ut:115
+msgid "Username"
+msgstr "Benutzername"
+
+#: ucode/template/themes/glass/sysauth.ut:122
+msgid "Password"
+msgstr "Passwort"
+
+#: ucode/template/themes/glass/sysauth.ut:127
+msgid "Log in"
+msgstr "Anmelden"
+
+#: ucode/template/themes/glass/header.ut:176
+msgid "No password set!"
+msgstr "Kein Passwort gesetzt!"
+
+#: ucode/template/themes/glass/header.ut:177
+msgid "There is no password set on this router. Please configure a root password to protect the web interface."
+msgstr "Auf diesem Router ist kein Passwort festgelegt. Bitte konfigurieren Sie ein Root-Passwort, um die Weboberfläche zu schützen."
+
+#: ucode/template/themes/glass/header.ut:179
+msgid "Go to password configuration..."
+msgstr "Zur Passwortkonfiguration..."
+
+#: ucode/template/themes/glass/header.ut:186
+msgid "JavaScript required!"
+msgstr "JavaScript erforderlich!"
+
+#: ucode/template/themes/glass/header.ut:187
+msgid "You must enable JavaScript in your browser or LuCI will not work properly."
+msgstr "Sie müssen JavaScript in Ihrem Browser aktivieren, damit LuCI ordnungsgemäß funktioniert."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Glass Theme"
+msgstr "Glass-Theme"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Configure the appearance of the Glass theme. Changes take effect after saving and refreshing the page."
+msgstr "Konfigurieren Sie das Erscheinungsbild des Glass-Themes. Änderungen werden nach dem Speichern und Aktualisieren der Seite wirksam."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "General"
+msgstr "Allgemein"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Theme mode"
+msgstr "Thema-Modus"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Controls the overall appearance. \"Normal\" follows the system preference."
+msgstr "Steuert das Gesamterscheinungsbild. „Automatisch" folgt der Systemeinstellung."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Auto (follow system)"
+msgstr "Automatisch (System folgen)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Light"
+msgstr "Hell"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Dark"
+msgstr "Dunkel"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Header status bar"
+msgstr "Kopfzeile-Statusleiste"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Show live system stats (CPU, RAM, network, uptime) in the header. Disable to reduce resource usage on low-end devices."
+msgstr "Live-Systemstatistiken (CPU, RAM, Netzwerk, Betriebszeit) in der Kopfzeile anzeigen. Deaktivieren, um die Ressourcennutzung auf leistungsschwachen Geräten zu reduzieren."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Base font size"
+msgstr "Basis-Schriftgröße"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Scales all text in the theme. Larger values improve readability on high-DPI displays."
+msgstr "Skaliert allen Text im Theme. Größere Werte verbessern die Lesbarkeit auf hochauflösenden Displays."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Small (13px)"
+msgstr "Klein (13px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Normal (14px)"
+msgstr "Normal (14px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Large (16px)"
+msgstr "Groß (16px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Extra Large (18px)"
+msgstr "Sehr groß (18px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Accent Colors"
+msgstr "Akzentfarben"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Primary color (light mode)"
+msgstr "Primärfarbe (Heller Modus)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Accent color used for active elements, links, and buttons in light mode."
+msgstr "Akzentfarbe für aktive Elemente, Links und Schaltflächen im hellen Modus."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Primary color (dark mode)"
+msgstr "Primärfarbe (Dunkler Modus)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Accent color used for active elements, links, and buttons in dark mode."
+msgstr "Akzentfarbe für aktive Elemente, Links und Schaltflächen im dunklen Modus."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Glass Effects — Light Mode"
+msgstr "Glas-Effekte — Heller Modus"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Blur intensity (px)"
+msgstr "Unschärfe-Intensität (px)"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Backdrop blur radius for glass panels. Higher values create a more frosted appearance."
+msgstr "Hintergrund-Unschärferadius für Glasflächen. Höhere Werte erzeugen ein stärker mattiertes Erscheinungsbild."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Panel transparency"
+msgstr "Panel-Transparenz"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Background opacity of glass panels (0 = fully transparent, 1 = fully opaque)."
+msgstr "Hintergrunddeckkraft der Glasflächen (0 = vollständig transparent, 1 = vollständig opak)."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Glass Effects — Dark Mode"
+msgstr "Glas-Effekte — Dunkler Modus"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Backdrop blur radius for glass panels in dark mode."
+msgstr "Hintergrund-Unschärferadius für Glasflächen im dunklen Modus."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Background opacity of glass panels in dark mode (0 = fully transparent, 1 = fully opaque)."
+msgstr "Hintergrunddeckkraft der Glasflächen im dunklen Modus (0 = vollständig transparent, 1 = vollständig opak)."
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Background"
+msgstr "Hintergrund"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Current background"
+msgstr "Aktueller Hintergrund"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "Active"
+msgstr "Aktiv"
+
+#: htdocs/luci-static/resources/view/system/glass.js
+msgid "No background set. Upload an image or video named \"bg\" (e.g. bg.jpg, bg.png, bg.mp4) to /www/luci-static/glass/background/ via SCP."
+msgstr "Kein Hintergrund festgelegt. Laden Sie ein Bild oder Video mit dem Namen „bg" (z. B. bg.jpg, bg.png, bg.mp4) per SCP in /www/luci-static/glass/background/ hoch."
